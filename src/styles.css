@@ -197,7 +197,9 @@ body > * {
 .left-panel {
   width: 300px;
   min-width: 300px;
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 20px;
   overflow-y: auto;
   display: flex;
@@ -226,7 +228,9 @@ body > * {
   transform: translateY(-50%);
   width: 24px;
   height: 48px;
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: none;
   border-radius: 0 8px 8px 0;
   cursor: pointer;
@@ -240,7 +244,7 @@ body > * {
 }
 
 .panel-toggle:hover {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.75);
 }
 
 .left-toggle {
@@ -579,11 +583,11 @@ body > * {
 .right-panel {
   width: 300px;
   min-width: 300px;
-  background: rgba(0, 0, 0, 0.08);
+  background: none;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 20px 0 0 0;
+  border-radius: 0;
 }
 
 .panel-header {
@@ -591,7 +595,7 @@ body > * {
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: none;
 }
 
 .panel-header h3 {
@@ -634,11 +638,14 @@ body > * {
 
 .bet-entry {
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: none;
   border-left: 4px solid transparent;
   margin: 6px 4px;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .bet-entry.win-entry {
@@ -723,4 +730,76 @@ body > * {
 .bets-list::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15);
   border-radius: 2px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .left-panel {
+    margin-left: -300px;
+    opacity: 0;
+    pointer-events: none;
+    min-width: 0;
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .left-toggle {
+    left: 0 !important;
+  }
+
+  .right-panel {
+    width: 250px;
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 850px) {
+  .right-panel {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .door {
+    width: 140px;
+    height: 200px;
+  }
+
+  .doors-container {
+    gap: 16px;
+  }
+
+  .result-title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 650px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .right-panel {
+    width: 100%;
+    min-width: 100%;
+    max-height: 200px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .door {
+    width: 110px;
+    height: 160px;
+  }
+
+  .doors-container {
+    gap: 10px;
+  }
+
+  .result-title {
+    font-size: 36px;
+  }
+
+  .result-header {
+    transform: translate(-50%, calc(-50% - 130px));
+  }
 }
